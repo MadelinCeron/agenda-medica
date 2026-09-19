@@ -70,3 +70,13 @@ CREATE TABLE citas (
         estado
     )
 );
+
+INSERT INTO pacientes (nombres, apellidos, telefono, correo) VALUES
+    ('Laura', 'Mendoza', '555-0101', 'laura.mendoza@example.com'),
+    ('Carlos', 'Ramírez', '555-0102', 'carlos.ramirez@example.com'),
+    ('Sofía', 'Torres', '555-0103', 'sofia.torres@example.com');
+
+INSERT INTO doctores (nombres, apellidos, especialidad, telefono, correo) VALUES
+    ('Elena', 'Vargas', 'Medicina general', '555-0201', 'elena.vargas@example.com'),
+    ('Mateo', 'Salas', 'Cardiología', '555-0202', 'mateo.salas@example.com'),
+    ('Julia', 'Ríos', 'Pediatría', '555-0203', 'julia.rios@example.com');
