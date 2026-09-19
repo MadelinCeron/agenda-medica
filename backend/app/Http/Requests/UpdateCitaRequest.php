@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Validator;
 
 class UpdateCitaRequest extends FormRequest
 {
@@ -53,5 +54,20 @@ class UpdateCitaRequest extends FormRequest
                 'in:pendiente,confirmada,cancelada,atendida',
             ],
         ];
+    }
+
+    public function withValidator(Validator $validator): void
+    {
+        $validator->after(function (Validator $validator): void {
+            $inicio = $this->input('fecha_inicio');
+            $fin = $this->input('fecha_fin');
+
+            if ($inicio && $fin && strtotime($fin) <= strtotime($inicio)) {
+                $validator->errors()->add(
+                    'fecha_fin',
+                    'La hora de finalización debe ser posterior a la hora de inicio.'
+                );
+            }
+        });
     }
 }
